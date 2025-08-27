@@ -1,0 +1,42 @@
+{
+    "projects": [
+        {
+            "id": "001",
+            "title": "arXiv 研究論文列表",
+            "type": ["人工智能", "氣象環境"],
+            "date": "2025-02-02",
+            "url": "projects/entries/001.html",
+            "keywords": ["人工智能", "機器學習", "氣象", "研究論文", "arXiv"],
+            "content": {
+                "text": "每日同步 arXiv 最新研究論文，並運用 ChatGPT 將論文標題翻譯成中文。",
+                "images": []
+            }
+        }
+    ],
+    "categories": [
+        {
+            "id": "finance",
+            "name": "金融投資",
+            "icon": "ri-money-dollar-circle-line"
+        },
+        {
+            "id": "weather",
+            "name": "氣象環境",
+            "icon": "ri-cloud-line"
+        },
+        {
+            "id": "ai",
+            "name": "人工智能",
+            "icon": "ri-brain-line"
+        },
+        {
+            "id": "others",
+            "name": "其他",
+            "icon": "ri-more-2-line"
+        }
+    ],
+    "settings": {
+        "defaultView": "grid",
+        "itemsPerPage": 10
+    }
+}

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>政治光譜左派右派之分別 - 研究筆記</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/notes.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        /* 基本樣式 */
+        .note-content h2 {
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        /* 政治光譜圖表 */
+        .spectrum-chart {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .spectrum-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .spectrum-line::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, #FF6B6B, #4ECDC4);
+            z-index: 1;
+        }
+
+        .spectrum-point {
+            background: var(--surface);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 政治立場比較卡片 */
+        .politics-comparison {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .politics-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .politics-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: var(--transition-base);
+        }
+
+        .politics-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .politics-title {
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .politics-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 1.2em;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .feature-list li::before {
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        /* 註釋 */
+        .note-footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- 頁頭 -->
+    <div id="header-placeholder"></div>
+
+    <!-- 主要內容 -->
+    <main class="container">
+        <div class="back-to-notes">
+            <a href="../index.html" class="back-link">
+                <i class="ri-arrow-left-line"></i>
+                返回筆記列表
+            </a>
+        </div>
+
+        <article class="note-detail">
+            <header class="note-detail-header">
+                <div class="note-meta">
+                    <span class="note-type">其他</span>
+                    <time class="note-date">2024-12-30</time>
+                </div>
+                <h1 class="note-title">政治光譜左派右派之分別</h1>
+                <div class="note-keywords">
+                    <span class="keyword">政治光譜</span>
+                    <span class="keyword">左派</span>
+                    <span class="keyword">右派</span>
+                </div>
+            </header>
+
+            <div class="note-content">
+                <!-- 政治光譜圖表 -->
+                <div class="spectrum-chart">
+                    <h3>政治光譜基本概念</h3>
+                    <div class="spectrum-line">
+                        <span class="spectrum-point">極左</span>
+                        <span class="spectrum-point">左派</span>
+                        <span class="spectrum-point">中間派</span>
+                        <span class="spectrum-point">右派</span>
+                        <span class="spectrum-point">極右</span>
+                    </div>
+                </div>
+
+                <!-- 左右派比較 -->
+                <div class="politics-comparison">
+                    <!-- 左派卡片 -->
+                    <div class="politics-card">
+                        <div class="politics-title">
+                            <i class="ri-arrow-left-circle-line"></i>
+                            左派特徵 (重平等，變革創新)
+                        </div>
+
+                        <div class="politics-section">
+                            <div class="section-title">
+                                <i class="ri-key-2-fill"></i>
+                                核心理念
+                            </div>
+                            <ul class="feature-list">
+                                <li>追求社會平等</li>
+                                <li>支持進步改革</li>
+                                <li>強調集體利益</li>
+                                <li>贊成政府干預</li>
+                                <li>重視公平分配</li>
+                                <li>推崇社會主義價值</li>
+                            </ul>
+                        </div>
+
+                        <div class="politics-section">
+                            <div class="section-title">
+                                <i class="ri-flag-line"></i>
+                                典型主張
+                            </div>
+                            <ul class="feature-list">
+                                <li>擴大社會福利</li>
+                                <li>保護弱勢群體</li>
+                                <li>支持同性婚姻</li>
+                                <li>提倡性別平等</li>
+                                <li>贊成環境保護</li>
+                                <li>促進多元文化</li>
+                            </ul>
+                        </div>
+
+                        <div class="politics-section">
+                            <div class="section-title">
+                                <i class="ri-money-dollar-circle-line"></i>
+                                經濟政策
+                            </div>
+                            <ul class="feature-list">
+                                <li>政府調控經濟</li>
+                                <li>縮小貧富差距</li>
+                                <li>提高最低工資</li>
+                                <li>加強市場監管</li>
+                                <li>支持工會權益</li>
+                                <li>高稅收高福利</li>
+                            </ul>
+                        </div>
+
+                        <div class="politics-section">
+                            <div class="section-title">
+                                <i class="ri-group-line"></i>
+                                社會議題
+                            </div>
+                            <ul class="feature-list">
+                                <li>支持移民政策</li>
+                                <li>提倡全民醫保</li>
+                                <li>重視社會福利</li>
+                                <li>支持槍支管制</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 右派卡片 -->
+                    <div class="politics-card">
+                        <div class="politics-title">
+                            <i class="ri-arrow-right-circle-line"></i>
+                            右派特徵 (重傳統，自由市場)
+                        </div>
+
+                        <div class="politics-section">
+                            <div class="section-title">
+                                <i class="ri-key-2-fill"></i>
+                                核心理念
+                            </div>
+                            <ul class="feature-list">
+                                <li>維護傳統價值</li>
+                                <li>支持自由市場</li>
+                                <li>強調個人責任</li>
+                                <li>限制政府干預</li>
+                                <li>重視效率競爭</li>
+                                <li>推崇資本主義精神</li>
+                            </ul>
+                        </div>
+
+                        <div class="politics-section">
+                            <div class="section-title">
+                                <i class="ri-flag-line"></i>
+                                典型主張
+                            </div>
+                            <ul class="feature-list">
+                                <li>維護傳統文化</li>
+                                <li>保守家庭價值</li>
+                                <li>維護傳統婚姻</li>
+                                <li>強調法治秩序</li>
+                                <li>重視國家安全</li>
+                                <li>強調本土文化</li>
+                            </ul>
+                        </div>
+
+                        <div class="politics-section">
+                            <div class="section-title">
+                                <i class="ri-money-dollar-circle-line"></i>
+                                經濟政策
+                            </div>
+                            <ul class="feature-list">
+                                <li>降低稅收</li>
+                                <li>減少政府管制</li>
+                                <li>保護私有財產</li>
+                                <li>鼓勵自由競爭</li>
+                                <li>支持企業發展</li>
+                                <li>低稅收低福利</li>
+                            </ul>
+                        </div>
+
+                        <div class="politics-section">
+                            <div class="section-title">
+                                <i class="ri-group-line"></i>
+                                社會議題
+                            </div>
+                            <ul class="feature-list">
+                                <li>嚴格移民政策</li>
+                                <li>市場化醫療</li>
+                                <li>限制社會福利</li>
+                                <li>保護擁槍權利</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note-footer">
+                    註：本分析基於網上資料、一般政治架構，實際政治立場可能更為複雜且具有地區差異性。不同國家和地區的左右派可能有不同的具體表現形式。
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- 頁尾 -->
+    <div id="footer-placeholder"></div>
+
+    <!-- 腳本 -->
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

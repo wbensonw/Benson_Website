@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球主要房地產市場週期分析 - 研究筆記</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/notes.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        /* 基本樣式 */
+        .note-content h2 {
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        /* 週期階段卡片 */
+        .cycle-phase {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            transition: var(--transition-base);
+        }
+
+        .cycle-phase:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .phase-section {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .phase-number {
+            background: var(--primary);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .phase-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .phase-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .phase-content {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding-left: 3rem;
+        }
+
+        .phase-content ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .phase-content li {
+            position: relative;
+            padding-left: 1.2em;
+            margin-bottom: 0.5em;
+        }
+
+        .phase-content li::before {
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* 標準列表樣式 */
+        .standard-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .standard-list li {
+            position: relative;
+            padding-left: 1.2em;
+            margin-bottom: 0.5em;
+        }
+
+        .standard-list li::before {
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* 數據表格 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        .data-table th {
+            background: var(--surface-variant);
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: var(--surface);
+        }
+
+        .data-table tr:hover {
+            background: var(--surface-hover);
+        }
+
+        /* 案例分析 */
+        .case-study {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-title {
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            left: 0.5rem;
+            top: 1.5rem;
+            width: 2px;
+            height: calc(100% + 1rem);
+            background: var(--border);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-year {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0.5rem 0;
+        }
+
+        .timeline-item li {
+            position: relative;
+            padding-left: 1.2em;
+            margin-bottom: 0.5em;
+        }
+
+        .timeline-item li::before {
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* 註釋 */
+        .note-footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* 段落樣式 */
+        p {
+            margin: 0.5rem 0;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* 標題樣式 */
+        h3 {
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .cycle-phase,
+            .case-study {
+                padding: 1rem;
+            }
+
+            .data-table {
+                font-size: 0.9rem;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 0.75rem;
+            }
+
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+        
+            .phase-content {
+                padding-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 頁頭 -->
+    <div id="header-placeholder"></div>
+
+    <!-- 主要內容 -->
+    <main class="container">
+        <div class="back-to-notes">
+            <a href="../index.html" class="back-link">
+                <i class="ri-arrow-left-line"></i>
+                返回筆記列表
+            </a>
+        </div>
+
+        <article class="note-detail">
+            <header class="note-detail-header">
+                <div class="note-meta">
+                    <span class="note-type">房地產研究</span>
+                    <time class="note-date">2024-12-09</time>
+                </div>
+                <h1 class="note-title">全球主要房地產市場週期分析</h1>
+                <div class="note-keywords">
+                    <span class="keyword">房地產週期</span>
+                    <span class="keyword">市場分析</span>
+                    <span class="keyword">投資策略</span>
+                    <span class="keyword">風險管理</span>
+                </div>
+            </header>
+
+            <div class="note-content">
+                <h2>房地產週期的基本理論</h2>
+                <div class="cycle-phase">
+                    <div class="phase-header">
+                        <i class="ri-loop-right-line"></i>
+                        <div>
+                            <div class="phase-title">房地產週期</div>
+                            <div class="phase-subtitle">泡沫形成 → 觸發下跌 → 系統蔓延 → 市場調整 → 企穩回升</div>
+                        </div>
+                    </div>
+
+                    <div class="phase-section">
+                        <div class="phase-header">
+                            <div class="phase-number">1</div>
+                            <div>
+                                <div class="phase-title">泡沫形成階段</div>
+                                <div class="phase-subtitle">漲上天</div>
+                            </div>
+                        </div>
+                        <div class="phase-content">
+                            <ul>
+                                <li>像吹氣球一樣，房價不斷上漲</li>
+                                <li>人人都在買房，深怕買不到</li>
+                                <li>銀行大量放貸，開發商瘋狂蓋房</li>
+                                <li>房價瘋漲，人人搶房</li>
+                            </ul>
+                        </div>
+		                <div class="table-container">
+                            <table class="data-table">
+                                <tr>
+                                <th>國家/地區</th>
+                                <th>時間段</th>
+                                <th>價格漲幅</th>
+                                <th>關鍵槓桿指標</th>
+                                <th>市場特徵</th>
+                            </tr>
+                            <tr>
+                                <td>日本</td>
+                                <td>1985-1991</td>
+                                <td>地價漲幅 6.2 倍，地價總值相當於美國國土的 4 倍</td>
+                                <td>企業槓桿率 268%</td>
+                                <td>投機需求 65%，土地抵押迴圈</td>
+                            </tr>
+                            <tr>
+                                <td>美國</td>
+                                <td>2001-2007</td>
+                                <td>房價漲幅 84.6%</td>
+                                <td>房貸證券化率 87.2%</td>
+                                <td>次貸規模 1.3萬億，低首付高槓桿</td>
+                            </tr>
+                            <tr>
+                                <td>中國</td>
+                                <td>2015-2021</td>
+                                <td>一線城市漲幅 127.3%</td>
+                                <td>房企槓桿率 83.5%</td>
+                                <td>房價收入比 >50倍，高投資佔比</td>
+                            </tr>
+                            <tr>
+                                <td>香港</td>
+                                <td>1990-1997</td>
+                                <td>房價漲幅 300%</td>
+                                <td>按揭成數高達 90%</td>
+                                <td>投機需求旺盛，炒樓盛行</td>
+                            </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="phase-section">
+                        <div class="phase-header">
+                            <div class="phase-number">2</div>
+                            <div>
+                                <div class="phase-title">觸發下跌階段</div>
+                                <div class="phase-subtitle">突然破了</div>
+                            </div>
+                        </div>
+                        <div class="phase-content">
+                            <ul>
+                                <li>氣球被針戳破的那一刻</li>
+                                <li>可能是政府打房、銀行收緊貸款</li>
+                                <li>房價開始下跌，買家觀望</li>
+                                <li>成交量大幅減少</li>
+                            </ul>
+                        </div>
+                        <div class="table-container">
+                            <table class="data-table">
+                                 <tr>
+                                    <th>國家/地區</th>
+                                    <th>觸發時間</th>
+                                    <th>直接原因</th>
+                                    <th>初期跌幅</th>
+                                    <th>市場反應</th>
+                                </tr>
+                                <tr>
+                                    <td>日本</td>
+                                    <td>1989-1991</td>
+                                    <td>央行加息 + 限貸</td>
+                                    <td>首年 -15%</td>
+                                    <td>成交量 -40%</td>
+                                </tr>
+                                <tr>
+                                    <td>美國</td>
+                                    <td>2007-2008</td>
+                                    <td>次貸違約潮</td>
+                                    <td>首年 -20%</td>
+                                    <td>金融機構(雷曼兄弟)破產</td>
+                                </tr>
+                                <tr>
+                                    <td>中國</td>
+                                    <td>2021-2022</td>
+                                    <td>三道紅線 + 斷貸</td>
+                                    <td>首年 -10%</td>
+                                    <td>開發商資金斷裂</td>
+                                </tr>
+                                <tr>
+                                    <td>香港</td>
+                                    <td>1997-1998</td>
+                                    <td>亞洲金融風暴</td>
+                                    <td>首年 -57%</td>
+                                    <td>恐慌性拋售</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="phase-section">
+                        <div class="phase-header">
+                            <div class="phase-number">3</div>
+                            <div>
+                                <div class="phase-title">系統蔓延階段</div>
+                                <div class="phase-subtitle">禍及全身</div>
+                            </div>
+                        </div>
+                        <div class="phase-content">
+                            <ul>
+                                <li>一個領域的問題影響到其他領域</li>
+                                <li>房企可能倒閉，銀行壞帳增加</li>
+                                <li>失業率上升，經濟下滑</li>
+                                <li>房價持續下跌</li>
+                            </ul>
+                        </div>
+
+                        <div class="table-container">
+                            <table class="data-table">
+                                <tr>
+                                    <th>國家/地區</th>
+                                    <th>金融系統影響</th>
+                                    <th>實體經濟影響</th>
+                                    <th>就業影響</th>
+                                    <th>政府對策</th>
+                                </tr>
+                                <tr>
+                                    <td>日本</td>
+                                    <td>銀行壞賬率 8.4%</td>
+                                    <td>GDP -2.5%</td>
+                                    <td>失業率 +2%</td>
+                                    <td>零利率政策</td>
+                                </tr>
+                                <tr>
+                                    <td>美國</td>
+                                    <td>金融損失 2.7萬億</td>
+                                    <td>GDP -2.8%</td>
+                                    <td>失業率 +3.5%</td>
+                                    <td>QE 救市</td>
+                                </tr>
+                                <tr>
+                                    <td>中國</td>
+                                    <td>銀行風險上升</td>
+                                    <td>GDP增速 -1%</td>
+                                    <td>地產相關失業增加</td>
+                                    <td>政策性紓困</td>
+                                </tr>
+                                <tr>
+                                    <td>香港</td>
+                                    <td>銀行壞賬增加</td>
+                                    <td>GDP -5.9%</td>
+                                    <td>失業率達 7.9%</td>
+                                    <td>停止賣地</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="phase-section">
+                        <div class="phase-header">
+                            <div class="phase-number">4</div>
+                            <div>
+                                <div class="phase-title">市場調整階段</div>
+                                <div class="phase-subtitle">慢慢療傷</div>
+                            </div>
+                        </div>
+                        <div class="phase-content">
+                            <ul>
+                                <li>傷口正在癒合的過程</li>
+                                <li>房價尋找新的平衡點</li>
+                                <li>政府可能推出救市政策</li>
+                                <li>市場信心慢慢恢復</li>
+                            </ul>
+                        </div>
+
+                        <div class="table-container">
+                            <table class="data-table">
+                                <tr>
+                                    <th>國家/地區</th>
+                                    <th>總跌幅</th>
+                                    <th>調整時間</th>
+                                    <th>復甦特徵</th>
+                                    <th>新常態</th>
+                                </tr>
+                                <tr>
+                                    <td>日本</td>
+                                    <td>70-80%</td>
+                                    <td>>10年</td>
+                                    <td>緩慢回升</td>
+                                    <td>資產價格長期低位</td>
+                                </tr>
+                                <tr>
+                                    <td>美國</td>
+                                    <td>27.4%</td>
+                                    <td>5-6年</td>
+                                    <td>V型反彈</td>
+                                    <td>市場更規範</td>
+                                </tr>
+                                <tr>
+                                    <td>中國</td>
+                                    <td>因城施策</td>
+                                    <td>持續調整中</td>
+                                    <td>分化明顯</td>
+                                    <td>回歸居住屬性</td>
+                                </tr>
+                                <tr>
+                                    <td>香港</td>
+                                    <td>57%</td>
+                                    <td>4年</td>
+                                    <td>快速反彈</td>
+                                    <td>週期性更明顯</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="phase-section">
+                        <div class="phase-header">
+                            <div class="phase-number">5</div>
+                            <div>
+                                <div class="phase-title">企穩回升階段</div>
+                                <div class="phase-subtitle">重獲新生</div>
+                            </div>
+                        </div>
+                        <div class="phase-content">
+                            <ul>
+                                <li>傷口癒合，重新站起來</li>
+                                <li>成交量開始回升</li>
+                                <li>房價緩慢上漲</li>
+                                <li>市場重回健康狀態</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>週期特徵</h3>
+                    <ul class="standard-list">
+                        <li>平均7-10年一個大週期</li>
+                        <li>影響因素：貨幣政策、人口結構、經濟增長、政府調控</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>週期指標體系</h3>
+                    <ul class="standard-list">
+                        <li>房價收入比</li>
+                        <li>房租回報率</li>
+                        <li>空置率</li>
+                        <li>開發投資額</li>
+                        <li>交易量變化</li>
+                        <li>貸款違約率</li>
+                    </ul>
+                </div>
+
+                <h2>經典案例分析（投資者視角）</h2>
+
+                <div class="case-study">
+                    <div class="case-title">美國次貸危機（2007-2012）</div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2006年房價見頂信號</div>
+                        <p>新屋銷售下滑 50%，庫存創歷史新高</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2007年關鍵時點</div>
+                        <p>次貸相關對沖基金破產，房貸支付違約率飆升</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2008年投資機會</div>
+                        <p>華爾街大行股價暴跌，房地產信託REITs價格腰斬</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2009-2010年底部特徵</div>
+                        <p>止贖房產供應達頂，機構投資者開始進場</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">復甦期投資策略</div>
+                        <p>重點佈局優質區位REITs，關注房地產相關股票</p>
+                    </div>
+                </div>
+
+                <div class="case-study">
+                    <div class="case-title">日本泡沫崩潰（1991-2002）</div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1989年警示信號</div>
+                        <p>地價年漲幅超 40%，房價收入比突破 15倍</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1990年轉折點</div>
+                        <p>日經225指數從 39,000 暴跌至 20,000</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1991-1995年</div>
+                        <p>資產價格持續下跌，投資者應避免接飛刀</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1995-2000年底部階段</div>
+                        <p>銀行不良貸款處置加速，土地市場流動性改善</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">經驗總結</div>
+                        <p>泡沫越大，調整時間越長，投資者需保持耐心</p>
+                    </div>
+                </div>
+
+                <div class="case-study">
+                    <div class="case-title">中國房地產調整（2021-至今）</div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021年預警</div>
+                        <p>頭部房企債務違約，三道紅線政策收緊</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022年關鍵變化</div>
+                        <p>斷貸潮出現，銀行風險開始顯現</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023年機會</div>
+                        <p>優質房企重組，部分城市政策放鬆</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">當前投資策略</div>
+                        <ul>
+                            <li>關注一線城市核心區位</li>
+                            <li>優選財務穩健房企</li>
+                            <li>把握政策性銀行支持的項目</li>
+                            <li>觀察REITs試點進展</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="case-study">
+                    <div class="case-title">香港房地產週期（1997-2003）</div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1997年前泡沫特徵</div>
+                        <p>炒樓情緒瘋狂，投機佔比超 50%</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1998年危機爆發</div>
+                        <p>恆指暴跌，房價快速下跌</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2003年轉折點</div>
+                        <p>SARS成為轉折點，價格觸底反彈</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">經驗總結</div>
+                        <ul>
+                            <li>關注資金流向變化</li>
+                            <li>留意政府調控政策</li>
+                            <li>觀察市場情緒指標</li>
+                            <li>重視香港特殊定位</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>投資者行動指南</h2>
+                    <p>結論：房地產泡沫形成往往經歷 3-7 年快速上漲期，價格上漲幅度通常是當地居民收入增長的 3-5 倍。理解泡沫形成機制，對預防系統性風險具有重要意義。各國經驗表明，房地產市場需要建立長效機制，避免過度金融化和投機化。</p>
+                    
+                    <h3>1. 市場頂部信號：</h3>
+                    <ul class="standard-list">
+                        <li>房價收入比過高（>10倍）</li>
+                        <li>投機需求佔比高（>40%）</li>
+                        <li>槓桿率快速上升</li>
+                        <li>開發商激進拿地</li>
+                        <li>銀行放貸標準寬鬆</li>
+                    </ul>
+
+                    <h3>2. 市場底部特徵：</h3>
+                    <ul class="standard-list">
+                        <li>成交量持續萎縮</li>
+                        <li>開發商大幅降價</li>
+                        <li>銀行收緊放貸</li>
+                        <li>投資情緒極度悲觀</li>
+                        <li>政府救市政策頻出</li>
+                    </ul>
+                </div>
+
+                <div class="note-footer">
+                    註：基於2024年4月前可獲得的全部公開數據。數據來源包括各國央行、國際貨幣基金組織、世界銀行、國家統計局及權威研究機構。
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- 頁尾 -->
+    <div id="footer-placeholder"></div>
+
+    <!-- 腳本 -->
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金融市場歷史表現分析 (1990-2023) - 研究筆記</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/notes.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<style>
+        .button-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .button {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-full);
+            background: var(--surface);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition-base);
+            /* 改善手機版按鈕排列 */
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+        }
+        .button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .button.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        #heatmap {
+            margin-bottom: 2rem;
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            /* 確保熱力圖容器可以水平捲動 */
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            margin-bottom: 2rem;
+            /* 防止表格溢出 */
+            position: relative;
+            z-index: 1;
+        }
+        #statsTable {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1000px; /* 確保表格有最小寬度 */
+        }
+        #statsTable th, 
+        #statsTable td {
+            padding: 0.75rem;
+            text-align: right;
+            border: 1px solid var(--border);
+            white-space: nowrap; /* 防止內容換行 */
+        }
+        #statsTable th:first-child, 
+        #statsTable td:first-child {
+            text-align: left;
+            position: sticky;
+            left: 0;
+            background: var(--surface);
+            z-index: 2;
+            /* 添加陰影效果 */
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .positive { color: #4CAF50; }
+        .negative { color: #F44336; }
+        #analysis-container {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* 分析內容樣式優化 */
+        .analysis-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .analysis-content {
+            line-height: 1.6;
+        }
+
+        .analysis-point {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 1rem;
+        }
+
+        .analysis-subpoint {
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+            margin: 0.25rem 0;
+        }
+
+        .analysis-spacer {
+            height: 0.75rem;
+        }
+
+        /* 縮小綜合視圖中圖表和表格的間距 */
+        .notes-container[data-view="summary"] #heatmap {
+            margin-bottom: 1rem;
+        }
+
+        .notes-container[data-view="summary"] .table-container {
+            margin-top: 0;
+        }
+
+        /* 響應式設計優化 */
+        @media (max-width: 768px) {
+            .button {
+                min-width: calc(50% - 0.5rem); /* 在手機版上每行顯示兩個按鈕 */
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        
+            #heatmap {
+                padding: 0.5rem;
+                margin: 0 -1rem 1rem -1rem; /* 負邊距使熱力圖可以全寬顯示 */
+                border-radius: 0;
+            }
+        
+            .table-container {
+                margin: 0 -1rem 1rem -1rem;
+                border-radius: 0;
+                /* 添加捲動提示 */
+                background: linear-gradient(to right, var(--surface) 30%, rgba(255,255,255,0)),
+                           linear-gradient(to right, rgba(255,255,255,0), var(--surface) 70%) 100% 0;
+                background-size: 40px 100%, 40px 100%;
+                background-repeat: no-repeat;
+                background-attachment: local, local;
+            }
+
+            #statsTable {
+                font-size: 0.9rem;
+            }
+
+            #statsTable th, 
+            #statsTable td {
+                padding: 0.5rem;
+            }
+
+            #analysis-container {
+                padding: 1rem;
+                margin: 0 -1rem 1rem -1rem;
+                border-radius: 0;
+            }
+
+            .analysis-title {
+                font-size: 1.2rem;
+            }
+
+            .analysis-point {
+                font-size: 1rem;
+            }
+
+            .analysis-subpoint {
+                font-size: 0.9rem;
+                padding-left: 1rem;
+            }
+        }
+
+        /* 深色模式適配 */
+        @media (prefers-color-scheme: dark) {
+            .table-container {
+                background: linear-gradient(to right, var(--surface) 30%, rgba(0,0,0,0)),
+                           linear-gradient(to right, rgba(0,0,0,0), var(--surface) 70%) 100% 0;
+                background-size: 40px 100%, 40px 100%;
+                background-repeat: no-repeat;
+                background-attachment: local, local;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 頁頭 -->
+    <div id="header-placeholder"></div>
+
+    <!-- 主要內容 -->
+    <main class="container">
+        <div class="back-to-notes">
+            <a href="../index.html" class="back-link">
+                <i class="ri-arrow-left-line"></i>
+                返回筆記列表
+            </a>
+        </div>
+
+        <article class="note-detail">
+            <header class="note-detail-header">
+                <div class="note-meta">
+                    <span class="note-type">金融投資</span>
+                    <time class="note-date">2024-12-04</time>
+                </div>
+                <h1 class="note-title">金融市場歷史表現分析 (1990-2023)</h1>
+                <div class="note-keywords">
+                    <span class="keyword">道瓊斯指數</span>
+                    <span class="keyword">香港恆生指數</span>
+                    <span class="keyword">黃金價格</span>
+                    <span class="keyword">WTI原油</span>
+                    <span class="keyword">歷史統計</span>
+                    <span class="keyword">市場分析</span>
+                </div>
+            </header>
+
+            <div class="note-content">
+                <div class="button-container">
+                    <button class="button" onclick="showData('dow')">道瓊斯指數</button>
+                    <button class="button" onclick="showData('hsi')">香港恆生指數</button>
+                    <button class="button" onclick="showData('gold')">黃金價格</button>
+                    <button class="button" onclick="showData('wti')">WTI原油</button>
+                    <button class="button" onclick="showData('summary')">綜合</button>
+                </div>
+
+                <div id="heatmap"></div>
+
+                <div class="table-container">
+                    <table id="statsTable"></table>
+                </div>
+
+                <div id="analysis-container"></div>
+            </div>
+        </article>
+    </main>
+
+    <!-- 頁尾 -->
+    <div id="footer-placeholder"></div>
+
+    <!-- 腳本 -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="001.js"></script>
+</body>
+</html>

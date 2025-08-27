@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球面積大小排名 - 研究筆記</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/notes.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* 基本樣式 */
+        .note-content h2 {
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        /* 表格相關樣式 */
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem 1.5rem;
+            border: none;
+            border-bottom: 1px solid var(--border);
+            background: white;
+            transition: background-color 0.2s ease;
+            text-align: center;
+        }
+
+        .data-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover td {
+            background: #f8f9ff;
+        }
+
+        .country-cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .rank-cell {
+            font-weight: 600;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .number-cell {
+            font-family: monospace;
+            text-align: center !important;
+        }
+
+        .table-container {
+            margin: 2rem 0;
+            overflow-x: auto;
+            border-radius: 12px;
+            background: white;
+            padding: 1px;
+        }
+
+        /* 圖表相關樣式 */
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .table-chart-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .table-section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .chart-section {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 標準列表樣式 */
+        .standard-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .standard-list li {
+            position: relative;
+            padding-left: 1.2em;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .standard-list li::before {
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* 註釋 */
+        .note-footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* 標題樣式 */
+        h3 {
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .data-table th,
+            .data-table td {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .country-cell {
+                gap: 0.5rem;
+            }
+
+            .table-chart-section {
+                flex-direction: column;
+            }
+            
+            .chart-section {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 頁頭 -->
+    <div id="header-placeholder"></div>
+
+    <!-- 主要內容 -->
+    <main class="container">
+        <div class="back-to-notes">
+            <a href="../index.html" class="back-link">
+                <i class="ri-arrow-left-line"></i>
+                返回筆記列表
+            </a>
+        </div>
+
+        <article class="note-detail">
+            <header class="note-detail-header">
+                <div class="note-meta">
+                    <span class="note-type">研究筆記</span>
+                    <time class="note-date">2025-01-06</time>
+                </div>
+                <h1 class="note-title">全球面積大小排名</h1>
+                <div class="note-keywords">
+                    <span class="keyword">地理</span>
+                    <span class="keyword">面積</span>
+                    <span class="keyword">國家</span>
+                    <span class="keyword">統計</span>
+                </div>
+            </header>
+
+            <div class="note-content">
+                <h2>各大洲面積排名</h2>
+                <div class="table-chart-section">
+                    <div class="table-section">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>🌏 大洲</th>
+                                        <th>面積（平方公里）</th>
+                                        <th>占地球陸地比例 (%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="country-cell">亞洲</td>
+                                        <td class="number-cell">44,579,000</td>
+                                        <td class="number-cell">30.1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="country-cell">非洲</td>
+                                        <td class="number-cell">30,370,000</td>
+                                        <td class="number-cell">20.4</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="country-cell">北美洲</td>
+                                        <td class="number-cell">24,709,000</td>
+                                        <td class="number-cell">16.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="country-cell">南美洲</td>
+                                        <td class="number-cell">17,840,000</td>
+                                        <td class="number-cell">11.9</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="country-cell">南極洲</td>
+                                        <td class="number-cell">13,200,000</td>
+                                        <td class="number-cell">8.9</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="country-cell">歐洲</td>
+                                        <td class="number-cell">10,530,000</td>
+                                        <td class="number-cell">7.1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="country-cell">大洋洲</td>
+                                        <td class="number-cell">8,525,989</td>
+                                        <td class="number-cell">5.1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="chart-section">
+                        <canvas id="continentsChart"></canvas>
+                    </div>
+                </div>
+
+                <h2>各大洋面積排名</h2>
+                <div class="table-chart-section">
+                    <div class="table-section">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>🌊 大洋</th>
+                                        <th>面積（平方公里）</th>
+                                        <th>占地球海洋比例 (%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="country-cell">太平洋</td>
+                                        <td class="number-cell">165,250,000</td>
+                                        <td class="number-cell">46.6</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="country-cell">大西洋</td>
+                                        <td class="number-cell">85,133,000</td>
+                                        <td class="number-cell">23.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="country-cell">印度洋</td>
+                                        <td class="number-cell">70,560,000</td>
+                                        <td class="number-cell">19.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="country-cell">南冰洋</td>
+                                        <td class="number-cell">21,960,000</td>
+                                        <td class="number-cell">6.1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="country-cell">北冰洋</td>
+                                        <td class="number-cell">14,056,000</td>
+                                        <td class="number-cell">4.3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="chart-section">
+                        <canvas id="oceansChart"></canvas>
+                    </div>
+                </div>
+				<h2>國家/地區面積排名（前10名）</h2>
+                <div class="table-chart-section">
+                    <div class="table-section">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>排名</th>
+                                        <th>國家/地區</th>
+                                        <th>面積（平方公里）</th>
+                                        <th>占全球陸地比例 (%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="rank-cell">1</td>
+                                        <td class="country-cell">🇷🇺 俄羅斯</td>
+                                        <td class="number-cell">17,098,246</td>
+                                        <td class="number-cell">11.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="rank-cell">2</td>
+                                        <td class="country-cell">🇨🇦 加拿大</td>
+                                        <td class="number-cell">9,984,670</td>
+                                        <td class="number-cell">6.6</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="rank-cell">3</td>
+                                        <td class="country-cell">🇨🇳 中國</td>
+                                        <td class="number-cell">9,596,961</td>
+                                        <td class="number-cell">6.4</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="rank-cell">4</td>
+                                        <td class="country-cell">🇺🇸 美國</td>
+                                        <td class="number-cell">9,525,067</td>
+                                        <td class="number-cell">6.3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="rank-cell">5</td>
+                                        <td class="country-cell">🇧🇷 巴西</td>
+                                        <td class="number-cell">8,515,770</td>
+                                        <td class="number-cell">5.7</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="rank-cell">6</td>
+                                        <td class="country-cell">🇦🇺 澳大利亞</td>
+                                        <td class="number-cell">7,692,024</td>
+                                        <td class="number-cell">5.1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="rank-cell">7</td>
+                                        <td class="country-cell">🇮🇳 印度</td>
+                                        <td class="number-cell">3,287,263</td>
+                                        <td class="number-cell">2.2</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="rank-cell">8</td>
+                                        <td class="country-cell">🇦🇷 阿根廷</td>
+                                        <td class="number-cell">2,780,400</td>
+                                        <td class="number-cell">1.9</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="rank-cell">9</td>
+                                        <td class="country-cell">🇰🇿 哈薩克斯坦</td>
+                                        <td class="number-cell">2,724,900</td>
+                                        <td class="number-cell">1.8</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="rank-cell">10</td>
+                                        <td class="country-cell">🇩🇿 阿爾及利亞</td>
+                                        <td class="number-cell">2,381,741</td>
+                                        <td class="number-cell">1.6</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="chart-section">
+                        <canvas id="countriesChart"></canvas>
+                    </div>
+                </div>
+
+                <h2>國家/地區面積排名（最小五國）</h2>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>排名</th>
+                                <th>國家/地區</th>
+                                <th>面積（平方公里）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="rank-cell">1</td>
+                                <td class="country-cell">🇻🇦 梵蒂岡</td>
+                                <td class="number-cell">0.44</td>
+                            </tr>
+                            <tr>
+                                <td class="rank-cell">2</td>
+                                <td class="country-cell">🇲🇨 摩納哥</td>
+                                <td class="number-cell">2.02</td>
+                            </tr>
+                            <tr>
+                                <td class="rank-cell">3</td>
+                                <td class="country-cell">🇳🇷 瑙魯</td>
+                                <td class="number-cell">21</td>
+                            </tr>
+                            <tr>
+                                <td class="rank-cell">4</td>
+                                <td class="country-cell">🇹🇻 圖瓦盧</td>
+                                <td class="number-cell">26</td>
+                            </tr>
+                            <tr>
+                                <td class="rank-cell">5</td>
+                                <td class="country-cell">🇸🇲 聖馬力諾</td>
+                                <td class="number-cell">61</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+				<div>
+                    <h2>資料說明</h2>
+                    <ul class="standard-list">
+                        <li>資料來源：United Nations Statistics Division、CIA World Factbook、World Bank（2024年更新）</li>
+                        <li>面積統計包含：陸地面積、內陸水域</li>
+                    </ul>
+
+                    <h3>特殊說明</h3>
+                    <ul class="standard-list">
+                        <li>中國面積包含港澳台地區</li>
+                        <li>俄羅斯面積包含克里米亞</li>
+                        <li>部分國家數據可能因領土爭議而有所不同</li>
+                        <li>資料更新日期：2024年1月</li>
+                    </ul>
+                </div>
+
+                <div class="note-footer">
+                    註：基於2024年4月前可獲得的全部公開數據。
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- 頁尾 -->
+    <div id="footer-placeholder"></div>
+
+    <!-- 腳本 -->
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        // 配色方案
+        const colorPalette = {
+            continents: [
+                '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', 
+                '#9966FF', '#FF9F40', '#47B39C'
+            ],
+            oceans: [
+                '#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF'
+            ],
+            countries: [
+                '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF',
+                '#FF9F40', '#47B39C', '#FC466B', '#3F5EFB', '#c31432',
+                '#808080'
+            ]
+        };
+
+        // 圖表配置選項
+        const chartOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'right',
+                    labels: {
+                        font: {
+                            size: 12
+                        }
+                    }
+                }
+            }
+        };
+
+        // 各大洲餅圖
+        new Chart(document.getElementById('continentsChart'), {
+            type: 'pie',
+            data: {
+                labels: ['亞洲', '非洲', '北美洲', '南美洲', '南極洲', '歐洲', '大洋洲'],
+                datasets: [{
+                    data: [30.1, 20.4, 16.5, 11.9, 8.9, 7.1, 5.1],
+                    backgroundColor: colorPalette.continents
+                }]
+            },
+            options: {
+                ...chartOptions,
+                plugins: {
+                    ...chartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: '各大洲面積占比'
+                    }
+                }
+            }
+        });
+
+        // 各大洋餅圖
+        new Chart(document.getElementById('oceansChart'), {
+            type: 'pie',
+            data: {
+                labels: ['太平洋', '大西洋', '印度洋', '南冰洋', '北冰洋'],
+                datasets: [{
+                    data: [46.6, 23.5, 19.5, 6.1, 4.3],
+                    backgroundColor: colorPalette.oceans
+                }]
+            },
+            options: {
+                ...chartOptions,
+                plugins: {
+                    ...chartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: '各大洋面積占比'
+                    }
+                }
+            }
+        });
+
+        // 國家面積餅圖
+        new Chart(document.getElementById('countriesChart'), {
+            type: 'pie',
+            data: {
+                labels: ['俄羅斯', '加拿大', '中國', '美國', '巴西', 
+                        '澳大利亞', '印度', '阿根廷', '哈薩克斯坦', 
+                        '阿爾及利亞', '其他'],
+                datasets: [{
+                    data: [11.5, 6.6, 6.4, 6.3, 5.7, 5.1, 2.2, 
+                          1.9, 1.8, 1.6, 50.9],
+                    backgroundColor: colorPalette.countries
+                }]
+            },
+            options: {
+                ...chartOptions,
+                plugins: {
+                    ...chartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: '全球國家面積占比（前10名）'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

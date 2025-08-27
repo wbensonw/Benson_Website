@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF9966">
+    <meta name="description" content="研究資訊平台 - 網頁儀表板，快速訪問學術研究相關網站和工具">
+    <title>網頁儀表板 - 研究資訊平台</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/design-system.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/modern-layout.css">
+    
+    <script>
+        // 檢查並應用保存的主題設置
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        // 主題切換功能
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+        
+        function updateThemeIcon(theme) {
+            const icon = document.getElementById('theme-icon');
+            if (icon) {
+                icon.className = theme === 'dark' ? 'ri-sun-line' : 'ri-moon-line';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 導航欄 -->
+        <nav class="navbar">
+            <div class="navbar-container">
+                <a href="../" class="navbar-brand">
+                    <i class="ri-dashboard-3-line"></i>
+                    研究資訊平台
+                </a>
+                
+                <div class="navbar-nav">
+                    <a href="./" class="nav-link active">
+                        <i class="ri-apps-2-line"></i>
+                        網頁導航
+                    </a>
+                    <a href="../papers/" class="nav-link">
+                        <i class="ri-file-list-3-line"></i>
+                        研究論文
+                    </a>
+                    <a href="../notes/" class="nav-link">
+                        <i class="ri-book-2-line"></i>
+                        研究筆記
+                    </a>
+                    <a href="../projects/" class="nav-link">
+                        <i class="ri-code-box-line"></i>
+                        實作應用
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 主要內容 -->
+        <main class="main-content">
+            <!-- 頁面標題 -->
+            <div class="page-header">
+                <h1 class="page-title">網頁儀表板</h1>
+                <p class="page-subtitle">
+                    快速訪問學術研究相關的網站和工具，整合您常用的學術資源
+                </p>
+            </div>
+
+            <!-- 工具欄 -->
+            <div class="toolbar">
+                <div class="toolbar-left">
+                    <div class="search-container" id="search-container">
+                        <div class="search-input-container">
+                            <i class="ri-search-line search-icon"></i>
+                            <input 
+                                type="search" 
+                                class="search-input" 
+                                id="search-input"
+                                placeholder="搜尋網站、描述或分類..." 
+                                aria-label="搜尋網站"
+                            >
+                            <button class="search-clear-btn" id="search-clear" aria-label="清除搜索">
+                                <i class="ri-close-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toolbar-right">
+                    <div class="view-toggle" id="view-toggle">
+                        <button class="view-btn active" data-view="grid" aria-label="網格視圖">
+                            <i class="ri-grid-fill"></i>
+                        </button>
+                        <button class="view-btn" data-view="list" aria-label="列表視圖">
+                            <i class="ri-list-check"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 分類篩選 -->
+            <div class="category-filter" id="category-filter">
+                <!-- 由 JavaScript 動態生成 -->
+            </div>
+
+            <!-- 卡片容器 -->
+            <div class="cards-container" id="cards-container">
+                <div class="cards-grid" id="widgets-grid">
+                    <!-- 由 JavaScript 動態生成 -->
+                </div>
+            </div>
+
+            <!-- 空狀態 -->
+            <div class="empty-state" id="empty-state" style="display: none;">
+                <div class="empty-icon">
+                    <i class="ri-search-line"></i>
+                </div>
+                <h3 class="empty-title">找不到相關內容</h3>
+                <p class="empty-description">
+                    請嘗試使用其他關鍵字搜尋，或選擇不同的分類查看
+                </p>
+                <button class="btn btn-primary" onclick="clearSearch()">
+                    <i class="ri-refresh-line"></i>
+                    清除搜尋
+                </button>
+            </div>
+
+            <!-- 載入狀態 -->
+            <div class="loading-cards" id="loading-cards">
+                <div class="loading-card">
+                    <div class="skeleton skeleton-circle skeleton-icon"></div>
+                    <div class="skeleton skeleton-title"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                </div>
+                <div class="loading-card">
+                    <div class="skeleton skeleton-circle skeleton-icon"></div>
+                    <div class="skeleton skeleton-title"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                </div>
+                <div class="loading-card">
+                    <div class="skeleton skeleton-circle skeleton-icon"></div>
+                    <div class="skeleton skeleton-title"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 主題切換按鈕 -->
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="切換主題">
+            <i id="theme-icon" class="ri-moon-line"></i>
+        </button>
+    </div>
+
+    <!-- 載入遮罩 -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+        <span class="loading-text">載入中...</span>
+    </div>
+
+    <script src="../assets/js/modern-dashboard.js"></script>
+</body>
+</html>

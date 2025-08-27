@@ -1,0 +1,363 @@
+{
+    "widgets": [
+        {
+            "id": "macaodaily",
+            "title": "澳門日報",
+            "icon": "ri-newspaper-line",
+            "description": "澳門地區主要中文報紙，提供澳門本地及國際新聞資訊。",
+            "url": "macaodaily.com",
+            "categories": ["常用"],
+            "priority": 1
+        },
+        {
+            "id": "io-gov-mo",
+            "title": "印務局",
+            "icon": "ri-government-line",
+            "description": "澳門特別行政區政府印務局官方網站，提供政府公報及法律資訊。",
+            "url": "io.gov.mo/cn/home",
+            "categories": ["常用"],
+            "priority": 2
+        },
+        {
+            "id": "weather-news",
+            "title": "中國氣象報",
+            "icon": "ri-newspaper-line",
+            "description": "中國氣象局官方報紙，提供氣象新聞和專業資訊。",
+            "url": "epaper.zgqxb.com.cn",
+            "categories": ["常用"],
+            "priority": 3
+        },
+        {
+            "id": "fed-rrp",
+            "title": "美國-聯準會隔夜逆回購交易量",
+            "icon": "ri-line-chart-line",
+            "description": "追蹤美聯儲逆回購操作數據，掌握市場流動性情況。",
+            "url": "macromicro.me/charts/34394/us-fed-onrrp-trading-flow",
+            "categories": ["金融投資"],
+            "priority": 4
+        },
+        {
+            "id": "nmc-cn",
+            "title": "中央氣象台",
+            "icon": "ri-cloud-line",
+            "description": "中國氣象局官方網站，提供全國天氣預報和氣象服務。",
+            "url": "nmc.cn",
+            "categories": ["氣象環境"],
+            "priority": 5
+        },
+        {
+            "id": "gd-weather",
+            "title": "廣東氣象",
+            "icon": "ri-cloud-line",
+            "description": "廣東省氣象局官方網站，提供廣東地區天氣預報服務。",
+            "url": "ftp.gd121.cn",
+            "categories": ["氣象環境"],
+            "priority": 6
+        },
+        {
+            "id": "zhuhai-weather",
+            "title": "珠海市氣象局",
+            "icon": "ri-cloud-line",
+            "description": "珠海市氣象局官方網站，提供珠海地區天氣預報服務。",
+            "url": "weather.zhuhai.gov.cn/#/home",
+            "categories": ["氣象環境"],
+            "priority": 7
+        },
+        {
+            "id": "aviation-vmmc",
+            "title": "Aviation VMMC",
+            "icon": "ri-flight-takeoff-line",
+            "description": "澳門國際機場航空天氣資訊。",
+            "url": "aviationweather.gov/data/metar/?id=VMMC&hours=24&include_taf=yes",
+            "categories": ["氣象環境"],
+            "priority": 8
+        },
+        {
+            "id": "easterlywave",
+            "title": "Easterlywave",
+            "icon": "ri-typhoon-line",
+            "description": "提供颱風路徑預測和天氣分析資訊。",
+            "url": "easterlywave.com/typhoon/ensemble",
+            "categories": ["氣象環境"],
+            "priority": 9
+        },
+        {
+            "id": "sailing-weather",
+            "title": "海員氣象",
+            "icon": "ri-ship-line",
+            "description": "提供海洋氣象資訊和航海天氣預報。",
+            "url": "sailingweather.cn/html_wx/pangu-tem.html",
+            "categories": ["氣象環境"],
+            "priority": 10
+        },
+        {
+            "id": "eco-meteor",
+            "title": "生態氣象平台",
+            "icon": "ri-leaf-line",
+            "description": "提供生態氣象監測和預報服務。",
+            "url": "em.cams.cma.cn/#/dashhome",
+            "categories": ["氣象環境"],
+            "priority": 11
+        },
+        {
+            "id": "himawari",
+            "title": "日本向日葵衛星",
+            "icon": "ri-satellite-line",
+            "description": "日本氣象廳衛星雲圖服務。",
+            "url": "data.jma.go.jp/mscweb/data/himawari/index.html",
+            "categories": ["其他2"],
+            "priority": 12
+        },
+        {
+            "id": "climate-center",
+            "title": "國家氣候中心",
+            "icon": "ri-temp-cold-line",
+            "description": "提供氣候監測、預測和氣候變化相關資訊。",
+            "url": "cmdp.ncc-cma.net/cn/index.htm",
+            "categories": ["氣象環境"],
+            "priority": 13
+        },
+        {
+            "id": "pacific-satellite",
+            "title": "太平洋衛星雲圖",
+            "icon": "ri-earth-line",
+            "description": "太平洋地區實時衛星雲圖。",
+            "url": "tropic.ssec.wisc.edu/real-time/mosaic/images/moswir.jpg",
+            "categories": ["氣象環境"],
+            "priority": 14
+        },
+        {
+            "id": "modis",
+            "title": "MODIS (Image of the day)",
+            "icon": "ri-image-line",
+            "description": "NASA MODIS衛星每日精選圖像。",
+            "url": "modis.gsfc.nasa.gov/gallery/showall.php",
+            "categories": ["氣象環境"],
+            "priority": 15
+        },
+        {
+            "id": "earth-observatory",
+            "title": "Earth Observatory",
+            "icon": "ri-earth-line",
+            "description": "NASA地球觀測站每日圖像。",
+            "url": "earthobservatory.nasa.gov/topic/image-of-the-day",
+            "categories": ["氣象環境"],
+            "priority": 16
+        },
+        {
+            "id": "coral-reef",
+            "title": "海水溫度資料",
+            "icon": "ri-water-flash-line",
+            "description": "全球珊瑚礁觀測網海水溫度數據。",
+            "url": "coralreefwatch.noaa.gov/product/5km",
+            "categories": ["氣象環境"],
+            "priority": 17
+        },
+        {
+            "id": "sea-ice",
+            "title": "海冰資料",
+            "icon": "ri-snowy-line",
+            "description": "全球海冰觀測和分析資料。",
+            "url": "nsidc.org/sea-ice-today/sea-ice-tools/charctic-interactive-sea-ice-graph",
+            "categories": ["氣象環境"],
+            "priority": 18
+        },
+        {
+            "id": "weather-science",
+            "title": "中國氣象科普視頻",
+            "icon": "ri-video-line",
+            "description": "氣象科普知識視頻平台。",
+            "url": "weather.com.cn/video/kp/index.shtml",
+            "categories": ["氣象環境"],
+            "priority": 19
+        },
+        {
+            "id": "mjo",
+            "title": "MJO預測",
+            "icon": "ri-radar-line",
+            "description": "馬登-朱利安振盪預測資訊。",
+            "url": "cpc.ncep.noaa.gov/products/precip/CWlink/MJO/CLIVAR/clivar_wh.shtml",
+            "categories": ["氣象環境"],
+            "priority": 20
+        },
+        {
+            "id": "pccu-weather",
+            "title": "台灣文化大學氣象資料庫",
+            "icon": "ri-database-2-line",
+            "description": "提供氣象觀測和研究資料。",
+            "url": "140.137.32.27/www/?fbcli",
+            "categories": ["其他2"],
+            "priority": 21
+        },
+        {
+            "id": "ncar",
+            "title": "NCAR 資料庫",
+            "icon": "ri-database-2-line",
+            "description": "美國國家大氣研究中心氣象資料庫。",
+            "url": "rda.ucar.edu/datasets/d084001/dataaccess",
+            "categories": ["氣象環境"],
+            "priority": 22
+        },
+		{
+            "id": "macao-library",
+            "title": "澳門館公共圖書館 - 電子資源",
+            "icon": "ri-book-2-line",
+            "description": "澳門圖書館電子資源平台，提供豐富的電子報紙和期刊資源。",
+            "url": "library.gov.mo/zh-hant/library-collections/e-resources/e-newspapper/pressreader",
+            "categories": ["其他"],
+            "priority": 23
+        },
+        {
+            "id": "connected-papers",
+            "title": "ConnectedPapers",
+            "icon": "ri-mindmap-line",
+            "description": "視覺化學術論文關係網絡，幫助發現相關研究和追蹤學術發展脈絡。",
+            "url": "connectedpapers.com",
+            "categories": ["期刊論文"],
+            "priority": 24
+        },
+        {
+            "id": "elicit",
+            "title": "Elicit",
+            "icon": "ri-ai-generate",
+            "description": "基於人工智能的研究助手，協助文獻綜述和研究趨勢分析。",
+            "url": "elicit.com",
+            "categories": ["期刊論文"],
+            "priority": 25
+        },
+        {
+            "id": "global-rates",
+            "title": "全球-成熟國家基準利率",
+            "icon": "ri-line-chart-line",
+            "description": "追蹤全球主要成熟經濟體的基準利率走勢。",
+            "url": "macromicro.me/charts/50813/global-developed-countries-interest-rates",
+            "categories": ["金融投資"],
+            "priority": 26
+        },
+        {
+            "id": "cn-m1m2-csi300",
+            "title": "中國-M1減M2 vs.滬深300",
+            "icon": "ri-line-chart-line",
+            "description": "分析中國貨幣供應差值與股市表現關係。",
+            "url": "macromicro.me/collections/55/cn-shanghai-shengzhen-csi-300-index/260/cn-china-m1-m2",
+            "categories": ["金融投資"],
+            "priority": 27
+        },
+        {
+            "id": "us-mm-index",
+            "title": "MM美股基本面指數",
+            "icon": "ri-stock-line",
+            "description": "追蹤美股市場基本面綜合指標。",
+            "url": "macromicro.me/collections/34/us-stock-relative/444/us-mm-gspc",
+            "categories": ["金融投資"],
+            "priority": 28
+        },
+        {
+            "id": "buffett-indicator",
+            "title": "美股-巴菲特指標",
+            "icon": "ri-stock-line",
+            "description": "追蹤美股總市值對GDP比率指標。",
+            "url": "macromicro.me/collections/34/us-stock-relative/406/us-buffet-index-gspc",
+            "categories": ["金融投資"],
+            "priority": 29
+        },
+        {
+            "id": "ncep-eemn",
+            "title": "NCEP EEMN Data",
+            "icon": "ri-database-2-line",
+            "description": "美國國家環境預報中心數據庫。",
+            "url": "ftp.emc.ncep.noaa.gov/gc_wmb/jpeng/eemn",
+            "categories": ["其他2"],
+            "priority": 30
+        },
+	{
+            "id": "etfdb",
+            "title": "ETF Database",
+            "icon": "ri-funds-line",
+            "description": "提供全球ETF基金的詳細數據、分析和研究工具的綜合性平台。",
+            "url": "etfdb.com",
+            "categories": ["金融投資"],
+            "priority": 31
+        },
+        {
+            "id": "people-daily",
+            "title": "人民網",
+            "icon": "ri-newspaper-line",
+            "description": "中國共產黨中央委員會機關報《人民日報》主辦的綜合性新聞網站。",
+            "url": "people.com.cn/BIG5",
+            "categories": ["常用"],
+            "priority": 32
+        },
+        {
+            "id": "weather-classification",
+            "title": "天氣圖像分類數據集",
+            "icon": "ri-database-2-line",
+            "description": "多類別天氣數據集，用於圖像分類。包含日出、晴天、下雨和多雲四種天氣類型的圖像，可用於戶外天氣分析和特徵識別。",
+            "url": "github.com/IMobinI/Weather-Classification",
+            "categories": ["其他2"],
+            "priority": 33
+        },
+        {
+            "id": "brain-mri",
+            "title": "腦部MRI分割數據集",
+            "icon": "ri-microscope-line",
+            "description": "包含腦部磁共振圖像及手動FLAIR異常分割掩模的數據集。來自癌症影像檔案館(TCIA)的110位患者數據，用於低級神經膠質瘤研究。",
+            "url": "github.com/IMobinI/Brain-MRI-Segmentation/tree/main",
+            "categories": ["其他2"],
+            "priority": 34
+        }
+    ],
+    "categories": [
+        {
+            "id": "frequent",
+            "name": "常用",
+            "icon": "ri-star-line",
+            "visible": true
+        },
+        {
+            "id": "finance",
+            "name": "金融投資",
+            "icon": "ri-money-dollar-circle-line",
+            "visible": true
+        },
+        {
+            "id": "weather",
+            "name": "氣象環境",
+            "icon": "ri-cloud-line",
+            "visible": true
+        },
+        {
+            "id": "ai",
+            "name": "人工智能",
+            "icon": "ri-brain-line",
+            "visible": true
+        },
+        {
+            "id": "journal",
+            "name": "期刊論文",
+            "icon": "ri-article-line",
+            "visible": true
+        },
+        {
+            "id": "others",
+            "name": "其他",
+            "icon": "ri-more-2-line",
+            "visible": true,
+            "clickCount": 0
+        },
+        {
+            "id": "others2",
+            "name": "其他2",
+            "icon": "ri-more-2-line",
+            "visible": false
+        }
+    ],
+    "settings": {
+        "title": "網頁儀表板",
+        "description": "快速訪問您常用的網站",
+        "theme": {
+            "primary": "#FF9966",
+            "secondary": "#FFB088"
+        }
+    }
+}

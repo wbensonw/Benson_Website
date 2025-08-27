@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF9966">
+    <meta name="description" content="研究筆記管理平台，記錄和整理您的學習心得與研究想法">
+    <title>研究筆記 - 研究資訊平台</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/design-system.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/modern-layout.css">
+    
+    <script>
+        // 檢查並應用保存的主題設置
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        // 主題切換功能
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+        
+        function updateThemeIcon(theme) {
+            const icon = document.getElementById('theme-icon');
+            if (icon) {
+                icon.className = theme === 'dark' ? 'ri-sun-line' : 'ri-moon-line';
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- 頁頭 -->
+    <div id="header-placeholder"></div>
+
+    <!-- 主要內容 -->
+    <main class="container">
+        <!-- 頁頭 -->
+        <header class="notes-header">
+            <div class="header-content">
+                <h1 class="notes-title">研究筆記</h1>
+                <p class="notes-subtitle">記錄和管理您的研究筆記</p>
+            </div>
+        </header>
+
+        <!-- 工具欄 -->
+        <div class="tools-container">
+            <!-- 搜索框 -->
+            <div class="search-container">
+                <i class="search-icon ri-search-line"></i>
+                <input type="text" class="search-box" placeholder="搜索筆記...">
+                <button class="search-clear">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+
+            <!-- 視圖切換 -->
+            <div class="view-toggle">
+                <button class="view-btn" data-view="grid">
+                    <i class="ri-grid-line"></i>
+                </button>
+                <button class="view-btn" data-view="list">
+                    <i class="ri-list-check"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 過濾器 -->
+        <div class="notes-filter">
+            <!-- 類型按鈕組 -->
+            <div class="type-buttons"></div>
+
+            <!-- 排序選擇 -->
+            <div class="filter-group">
+                <label for="sort-select" class="filter-label">排序：</label>
+                <select id="sort-select" class="filter-select">
+                    <option value="date-desc">日期（新到舊）</option>
+                    <option value="date-asc">日期（舊到新）</option>
+                    <option value="title">標題</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 筆記列表 -->
+        <div class="notes-container" data-view="grid"></div>
+
+        <!-- 分頁 -->
+        <div class="pagination"></div>
+    </main>
+
+    <!-- 頁尾 -->
+    <div id="footer-placeholder"></div>
+
+    <!-- 載入中遮罩 -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>載入中...</p>
+    </div>
+
+    <!-- 腳本 -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/notes.js"></script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF9966">
+    <meta name="description" content="研究資訊平台 - 整合研究論文、筆記與實作應用的現代化平台">
+    <meta name="keywords" content="研究平台, 學術論文, 研究筆記, 實作應用, 個人網站">
+    <title>研究資訊平台 - 現代化學術研究管理系統</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/design-system.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    
+    <script>
+        // 應用保存的主題設置
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        // 主題切換功能
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+        
+        function updateThemeIcon(theme) {
+            const icon = document.getElementById('theme-icon');
+            if (icon) {
+                icon.className = theme === 'dark' ? 'ri-sun-line' : 'ri-moon-line';
+            }
+        }
+    </script>
+    
+    <style>
+        /* 首頁專用樣式 */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff9966' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 48rem;
+            padding: 0 var(--space-6);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: var(--text-5xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-6);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--orange-600) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: var(--text-xl);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-8);
+            line-height: var(--leading-relaxed);
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-16);
+            max-width: 60rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .feature-card {
+            background: var(--surface-primary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-6);
+            text-align: center;
+            transition: var(--transition-normal);
+            box-shadow: var(--shadow-card);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card-hover);
+        }
+        
+        .feature-icon {
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--orange-200) 100%);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-4);
+            font-size: var(--text-2xl);
+            color: var(--primary-dark);
+        }
+        
+        .feature-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-2);
+            color: var(--text-primary);
+        }
+        
+        .feature-description {
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+            line-height: var(--leading-relaxed);
+        }
+        
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .floating-element {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: var(--radius-full);
+            animation: float 8s ease-in-out infinite;
+            opacity: 0.6;
+        }
+        
+        .floating-element:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { top: 60%; left: 80%; animation-delay: 1s; }
+        .floating-element:nth-child(3) { top: 80%; left: 20%; animation-delay: 2s; }
+        .floating-element:nth-child(4) { top: 30%; left: 70%; animation-delay: 3s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(90deg); }
+            50% { transform: translateY(-40px) rotate(180deg); }
+            75% { transform: translateY(-20px) rotate(270deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: var(--text-4xl);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--text-lg);
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .feature-cards {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+                margin-top: var(--space-12);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 主要內容區 -->
+        <main class="hero-section">
+            <!-- 背景裝飾 -->
+            <div class="hero-background"></div>
+            <div class="floating-elements">
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+            </div>
+            
+            <!-- 主要內容 -->
+            <div class="hero-content">
+                <h1 class="hero-title animate-fade-in">研究資訊平台</h1>
+                <p class="hero-subtitle animate-fade-in">
+                    現代化的學術研究管理系統，整合您的研究論文、學習筆記與實作應用，
+                    打造高效便捷的個人研究工作流程
+                </p>
+                
+                <div class="hero-actions animate-fade-in">
+                    <a href="dashboard/" class="btn btn-primary btn-lg">
+                        <i class="ri-dashboard-3-line"></i>
+                        進入平台
+                    </a>
+                    <a href="papers/" class="btn btn-secondary btn-lg">
+                        <i class="ri-file-list-3-line"></i>
+                        瀏覽論文
+                    </a>
+                </div>
+                
+                <!-- 功能特色卡片 -->
+                <div class="feature-cards">
+                    <div class="feature-card animate-fade-in">
+                        <div class="feature-icon">
+                            <i class="ri-apps-2-line"></i>
+                        </div>
+                        <h3 class="feature-title">網頁導航</h3>
+                        <p class="feature-description">
+                            整合常用學術資源與工具，快速訪問研究相關網站
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card animate-fade-in">
+                        <div class="feature-icon">
+                            <i class="ri-file-list-3-line"></i>
+                        </div>
+                        <h3 class="feature-title">研究論文</h3>
+                        <p class="feature-description">
+                            收藏與管理您的學術論文，支援多種格式與引用
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card animate-fade-in">
+                        <div class="feature-icon">
+                            <i class="ri-book-2-line"></i>
+                        </div>
+                        <h3 class="feature-title">研究筆記</h3>
+                        <p class="feature-description">
+                            記錄學習心得與研究想法，建立個人知識庫
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card animate-fade-in">
+                        <div class="feature-icon">
+                            <i class="ri-code-box-line"></i>
+                        </div>
+                        <h3 class="feature-title">實作應用</h3>
+                        <p class="feature-description">
+                            展示您的研究成果與實際應用專案
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- 主題切換按鈕 -->
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="切換主題">
+            <i id="theme-icon" class="ri-moon-line"></i>
+        </button>
+    </div>
+    
+    <script>
+        // 初始化主題圖標
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            updateThemeIcon(currentTheme);
+        });
+        
+        // 3秒後自動跳轉到儀表板
+        setTimeout(function() {
+            window.location.href = 'dashboard/';
+        }, 5000);
+    </script>
+</body>
+</html>

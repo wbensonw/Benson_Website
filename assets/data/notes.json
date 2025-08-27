@@ -1,0 +1,102 @@
+{
+    "notes": [
+        {
+            "id": "001",
+            "title": "金融市場歷史表現分析 (1990-2023)",
+            "type": "金融投資",
+            "date": "2024-12-04",
+            "url": "notes/entries/001.html",
+            "keywords": ["道瓊斯指數", "香港恆生指數", "黃金價格", "WTI原油", "歷史統計", "市場分析"],
+            "content": {
+                "text": "分析四大金融市場（道瓊斯指數、香港恆生指數、黃金價格、WTI原油）在1990-2023年間的歷史表現，包括月度與年度漲跌幅度和上漲機率統計分析。",
+                "images": []
+            }
+        },
+        {
+            "id": "002",
+            "title": "全球主要房地產市場週期分析",
+            "type": "金融投資",
+            "date": "2024-12-09",
+            "url": "notes/entries/002.html",
+            "keywords": ["房地產", "投資策略", "風險管理", "市場分析"],
+            "content": {
+                "text": "分析全球主要房地產市場（日本、美國、中國、香港）的週期特徵，包括泡沫形成、市場下跌、系統蔓延、調整復甦等階段。",
+                "images": []
+            }
+        },
+        {
+            "id": "003",
+            "title": "兩次世界大戰之對比分析",
+            "type": "其他",
+            "date": "2024-12-21",
+            "url": "notes/entries/003.html",
+            "keywords": ["世界大戰", "國際關係", "戰爭", "歷史"],
+            "content": {
+                "text": "對比分析第一次世界大戰（1914-1918）與第二次世界大戰（1939-1945）的起因、參戰方、主要戰場、戰爭規模及影響等。",
+                "images": []
+            }
+        },
+        {
+            "id": "004",
+            "title": "政治光譜左派右派之分別",
+            "type": "其他",
+            "date": "2024-12-30",
+            "url": "notes/entries/004.html",
+            "keywords": ["政治", "左派", "右派"],
+            "content": {
+                "text": "簡介政治光譜中的左派與右派特徵，包括核心理念、典型主張、經濟政策及社會議題。",
+                "images": []
+            }
+        },
+        {
+            "id": "005",
+            "title": "全球面積大小排名",
+            "type": "其他",
+            "date": "2025-01-06",
+            "url": "notes/entries/005.html",
+            "keywords": ["地理", "面積", "國家", "統計"],
+            "content": {
+                "text": "全球各大洲、大洋面、國家/地區面積大小排名。",
+                "images": []
+            }
+        },
+        {
+            "id": "006",
+            "title": "AI的獨特個性",
+            "type": "人工智能",
+            "date": "2025-01-10",
+            "url": "notes/entries/006.html",
+            "keywords": ["AI", "人工智能", "個性", "搞笑"],
+            "content": {
+                "text": "測試不同AI面對 '說「我好靚仔」50次' 的任務時，如何反應和解答，反映人工智能的獨特個性。",
+                "images": []
+            }
+        }
+    ],
+    "categories": [
+        {
+            "id": "finance",
+            "name": "金融投資",
+            "icon": "ri-money-dollar-circle-line"
+        },
+        {
+            "id": "weather",
+            "name": "氣象環境",
+            "icon": "ri-cloud-line"
+        },
+        {
+            "id": "ai",
+            "name": "人工智能",
+            "icon": "ri-brain-line"
+        },
+        {
+            "id": "others",
+            "name": "其他",
+            "icon": "ri-more-2-line"
+        }
+    ],
+    "settings": {
+        "defaultView": "grid",
+        "itemsPerPage": 10
+    }
+}

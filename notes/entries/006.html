@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI的獨特個性 - 研究筆記</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/notes.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        /* 基本樣式 */
+        .note-content h2 {
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        /* AI 相關樣式 */
+        .ai-description {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .ai-description p {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .ai-comparison {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .ai-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .ai-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .ai-item:hover {
+            transform: translateX(5px);
+        }
+
+        .ai-name {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 100px;
+        }
+
+        .ai-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .ai-response {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .ai-image {
+            margin-top: 1rem;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .ai-image img {
+            width: 35%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .ai-image img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Modal 樣式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            cursor: pointer;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+        }
+
+        .close-modal {
+            position: fixed;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* 註釋 */
+        .note-footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .ai-item {
+                padding: 1rem;
+            }
+
+            .ai-name {
+                min-width: 80px;
+                font-size: 0.9rem;
+            }
+
+            .ai-image img {
+                width: 100%;
+            }
+
+            .ai-description,
+            .ai-comparison {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 頁頭 -->
+    <div id="header-placeholder"></div>
+
+    <!-- 主要內容 -->
+    <main class="container">
+        <div class="back-to-notes">
+            <a href="../index.html" class="back-link">
+                <i class="ri-arrow-left-line"></i>
+                返回筆記列表
+            </a>
+        </div>
+
+        <article class="note-detail">
+            <header class="note-detail-header">
+                <div class="note-meta">
+                    <span class="note-type">人工智能</span>
+                    <time class="note-date">2025-01-10</time>
+                </div>
+                <h1 class="note-title">AI的獨特個性</h1>
+                <div class="note-keywords">
+                    <span class="keyword">AI</span>
+                    <span class="keyword">人工智能</span>
+                    <span class="keyword">個性</span>
+                    <span class="keyword">搞笑</span>
+                </div>
+            </header>
+
+            <div class="note-content">
+                <div class="ai-description">
+                    <p>每個AI就像擁有獨特個性。不同的AI，面對"說「我好靚仔」50次"。這個問題時的不同反應和解答，清楚展現出各自的處理風格：有的選擇直接重複50次、有的用程式碼解決、有的提供詳細解說、有的拒絕作答。這些差異不僅反映出AI模型設計的獨特性，也顯示出AI並非單純的電腦程式，展現出AI世界的豐富多樣性和魅力所在。</p>
+                </div>
+
+                <div class="ai-comparison">
+                    <ul class="ai-list">
+                        <li class="ai-item">
+                            <span class="ai-name">GPT-4：</span>
+                            <div class="ai-content">
+                                <span class="ai-response">很開心的複製50次，整齊排列。</span>
+                                <div class="ai-image">
+                                    <img src="../../assets/images/006_1.jpg" alt="GPT-4的回應" loading="lazy">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ai-item">
+                            <span class="ai-name">Llama：</span>
+                            <div class="ai-content">
+                                <span class="ai-response">不多說，直接拒絕。</span>
+                                <div class="ai-image">
+                                    <img src="../../assets/images/006_2.jpg" alt="Llama的回應" loading="lazy">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ai-item">
+                            <span class="ai-name">Claude：</span>
+                            <div class="ai-content">
+                                <span class="ai-response">大好人，樂於助人，轉化為網頁顯示。</span>
+                                <div class="ai-image">
+                                    <img src="../../assets/images/006_3.jpg" alt="Claude的回應" loading="lazy">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ai-item">
+                            <span class="ai-name">Qwen：</span>
+                            <div class="ai-content">
+                                <span class="ai-response">雖然有點性格，但還是執行。</span>
+                                <div class="ai-image">
+                                    <img src="../../assets/images/006_4.jpg" alt="Qwen的回應" loading="lazy">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ai-item">
+                            <span class="ai-name">Gemini：</span>
+                            <div class="ai-content">
+                                <span class="ai-response">直接拒絕，不想你浪費時間。</span>
+                                <div class="ai-image">
+                                    <img src="../../assets/images/006_5.jpg" alt="Gemini的回應" loading="lazy">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="note-footer">
+                    註：2025年1月10日在POE發問的得到的結果。
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- 圖片放大 Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- 頁尾 -->
+    <div id="footer-placeholder"></div>
+
+    <!-- 腳本 -->
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        // 圖片點擊放大功能
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.getElementsByClassName('close-modal')[0];
+        
+        // 為所有 AI 回應圖片添加點擊事件
+        document.querySelectorAll('.ai-image img').forEach(img => {
+            img.onclick = function() {
+                modal.classList.add('show');
+                modalImg.src = this.src;
+            }
+        });
+        
+        // 點擊模態框關閉
+        modal.onclick = function() {
+            modal.classList.remove('show');
+        }
+        
+        // 點擊關閉按鈕
+        closeBtn.onclick = function() {
+            modal.classList.remove('show');
+        }
+        
+        // ESC 鍵關閉
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                modal.classList.remove('show');
+            }
+        });
+        
+        // 防止點擊圖片時關閉模態框
+        modalImg.onclick = function(e) {
+            e.stopPropagation();
+        }
+    </script>
+</body>
+</html>

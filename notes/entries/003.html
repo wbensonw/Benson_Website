@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兩次世界大戰之對比分析 - 研究筆記</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/notes.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        /* 基本樣式 */
+        .note-content h2 {
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        /* 戰爭比較卡片 */
+        .war-comparison {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .war-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .war-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: var(--transition-base);
+        }
+
+        .war-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .war-title {
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .war-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-content {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* 列表樣式 */
+        .war-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0.5rem 0;
+        }
+
+        .war-list li {
+            position: relative;
+            padding-left: 1.2em;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .war-list li::before {
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        /* 數據表格 */
+        .war-data {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .data-item {
+            background: var(--surface-variant);
+            padding: 0.8rem;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+
+        .data-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .data-value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* 結果區塊 */
+        .results {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .results-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        /* 註釋 */
+        .note-footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* 比較指標 */
+        .comparison-indicators {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+        }
+
+        .indicator-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .indicator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .indicator-item {
+            padding: 1rem;
+            background: var(--surface-variant);
+            border-radius: var(--radius);
+        }
+    </style>
+</head>
+<body>
+    <!-- 頁頭 -->
+    <div id="header-placeholder"></div>
+
+    <!-- 主要內容 -->
+    <main class="container">
+        <div class="back-to-notes">
+            <a href="../index.html" class="back-link">
+                <i class="ri-arrow-left-line"></i>
+                返回筆記列表
+            </a>
+        </div>
+
+        <article class="note-detail">
+            <header class="note-detail-header">
+                <div class="note-meta">
+                    <span class="note-type">其它</span>
+                    <time class="note-date">2024-12-09</time>
+                </div>
+                <h1 class="note-title">兩次世界大戰之對比分析</h1>
+                <div class="note-keywords">
+                    <span class="keyword">世界大戰</span>
+                    <span class="keyword">國際關係</span>
+                    <span class="keyword">戰爭</span>
+		    <span class="keyword">歷史</span>
+                </div>
+            </header>
+
+            <div class="note-content">
+                <div class="war-comparison">
+                    <!-- 第一次世界大戰卡片 -->
+                    <div class="war-card">
+                        <div class="war-title">第一次世界大戰（1914 - 1918）</div>
+                        
+                        <div class="war-section">
+                            <div class="section-title">
+                                <i class="ri-fire-line"></i>
+                                導火線
+                            </div>
+                            <div class="section-content">
+                                歐洲皇室間的家族內鬥戰爭
+                                <ul class="war-list">
+                                    <li>薩拉熱窩事件</li>
+                                    <li>奧匈帝國皇儲被塞爾維亞人暗殺</li>
+                                    <li>就像踢到一個多米諾骨牌，引發連鎖反應</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="war-section">
+                            <div class="section-title">
+                                <i class="ri-sword-line"></i>
+                                參戰方
+                            </div>
+                            <ul class="war-list">
+                                <li>協約國：英、法、俄（後來美國加入）</li>
+                                <li>同盟國：德、奧匈、土耳其</li>
+                            </ul>
+                        </div>
+
+                        <div class="war-section">
+                            <div class="section-title">
+                                <i class="ri-map-pin-line"></i>
+                                主要戰場
+                            </div>
+                            <ul class="war-list">
+                                <li>歐洲大陸</li>
+                                <li>以陸地戰爭為主</li>
+                                <li>首次出現坦克、毒氣等新式武器(地面武器)</li>
+                            </ul>
+                        </div>
+
+                        <div class="war-section">
+                            <div class="section-title">
+                                <i class="ri-bar-chart-line"></i>
+                                戰爭數據
+                            </div>
+                            <div class="war-data">
+                                <div class="data-item">
+                                    <div class="data-label">參戰國</div>
+                                    <div class="data-value">32 個</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-label">動員人數</div>
+                                    <div class="data-value">6500 萬</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-label">死亡人數</div>
+                                    <div class="data-value">900 萬軍人</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-label">戰爭費用</div>
+                                    <div class="data-value">1860 億美元</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-label">持續時間</div>
+                                    <div class="data-value">4 年 3 個月</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="results">
+                            <div class="results-title">結果</div>
+                            <ul class="war-list">
+                                <li>協約國勝利</li>
+                                <li>凡爾賽條約嚴懲德國</li>
+                                <li>多個帝國解體（奧匈、德意志、奧斯曼）</li>
+                                <li>改變歐洲格局</li>
+                                <li>催生國際聯盟</li>
+                                <li>種下二戰種子</li>
+                                <li>歐洲霸主地位動搖</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 第二次世界大戰卡片 -->
+                    <div class="war-card">
+                        <div class="war-title">第二次世界大戰（1939 - 1945）</div>
+                        
+                        <div class="war-section">
+                            <div class="section-title">
+                                <i class="ri-fire-line"></i>
+                                導火線
+                            </div>
+                            <div class="section-content">
+                                意識形態之爭：民主 vs 法西斯
+                                <ul class="war-list">
+                                    <li>德國入侵波蘭（歐洲戰場）</li>
+                                    <li>珍珠港事件（太平洋戰場）</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="war-section">
+                            <div class="section-title">
+                                <i class="ri-sword-line"></i>
+                                參戰方
+                            </div>
+                            <ul class="war-list">
+                                <li>盟軍：美、英、蘇聯</li>
+                                <li>軸心國：德、意、日本</li>
+                            </ul>
+                        </div>
+
+                        <div class="war-section">
+                            <div class="section-title">
+                                <i class="ri-map-pin-line"></i>
+                                主要戰場
+                            </div>
+                            <ul class="war-list">
+                                <li>遍布全球（歐洲、亞洲、非洲、太平洋）</li>
+                                <li>海陸空全面作戰</li>
+                                <li>出現原子彈、火箭導彈等大規模殺傷性武器(毀滅性武器)</li>
+                            </ul>
+                        </div>
+
+                        <div class="war-section">
+                            <div class="section-title">
+                                <i class="ri-bar-chart-line"></i>
+                                戰爭數據
+                            </div>
+                            <div class="war-data">
+                                <div class="data-item">
+                                    <div class="data-label">參戰國</div>
+                                    <div class="data-value">61 個</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-label">動員人數</div>
+                                    <div class="data-value">1.1 億</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-label">死亡人數</div>
+                                    <div class="data-value">5000 - 7000 萬</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-label">戰爭費用</div>
+                                    <div class="data-value">1.5 萬億美元</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-label">持續時間</div>
+                                    <div class="data-value">6 年</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="results">
+                            <div class="results-title">結果</div>
+                            <ul class="war-list">
+                                <li>盟軍勝利</li>
+                                <li>德日投降</li>
+                                <li>冷戰開始</li>
+                                <li>改變世界格局</li>
+                                <li>形成聯合國</li>
+                                <li>美蘇成為超級大國</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note-footer">
+                    註：本分析基於歷史文獻記載，數據來源包括各國軍事檔案、歷史文獻及學術研究資料。由於戰時統計的局限性，部分數據可能存在誤差。
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- 頁尾 -->
+    <div id="footer-placeholder"></div>
+
+    <!-- 腳本 -->
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>
