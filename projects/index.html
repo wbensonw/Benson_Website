@@ -43,75 +43,169 @@
     </script>
 </head>
 <body>
-    <!-- 頁頭 -->
-    <div id="header-placeholder"></div>
-
-    <!-- 主要內容 -->
-    <main class="container">
-        <!-- 頁頭 -->
-        <header class="projects-header">
-            <div class="header-content">
-                <h1 class="projects-title">實作應用</h1>
-                <p class="projects-subtitle">管理您的實作應用</p>
+    <div class="app-container">
+        <!-- 導航欄 -->
+        <nav class="navbar">
+            <div class="navbar-container">
+                <a href="../" class="navbar-brand">
+                    <i class="ri-dashboard-3-line"></i>
+                    研究資訊平台
+                </a>
+                
+                <div class="navbar-nav">
+                    <a href="../dashboard/" class="nav-link">
+                        <i class="ri-apps-2-line"></i>
+                        網頁導航
+                    </a>
+                    <a href="../papers/" class="nav-link">
+                        <i class="ri-file-list-3-line"></i>
+                        研究論文
+                    </a>
+                    <a href="../notes/" class="nav-link">
+                        <i class="ri-book-2-line"></i>
+                        研究筆記
+                    </a>
+                    <a href="./" class="nav-link active">
+                        <i class="ri-code-box-line"></i>
+                        實作應用
+                    </a>
+                </div>
             </div>
-        </header>
+        </nav>
 
-        <!-- 工具欄 -->
-        <div class="tools-container">
-            <!-- 搜索框 -->
-            <div class="search-container">
-                <i class="search-icon ri-search-line"></i>
-                <input type="text" class="search-box" placeholder="搜索實作應用...">
-                <button class="search-clear">
-                    <i class="ri-close-line"></i>
-                </button>
+        <!-- 主要內容 -->
+        <main class="main-content">
+            <!-- 頁面標題 -->
+            <div class="page-header">
+                <h1 class="page-title">實作應用</h1>
+                <p class="page-subtitle">
+                    展示研究成果與實際專案應用，分享技術實現和創新應用
+                </p>
             </div>
 
-            <!-- 視圖切換 -->
-            <div class="view-toggle">
-                <button class="view-btn" data-view="grid">
-                    <i class="ri-grid-line"></i>
-                </button>
-                <button class="view-btn" data-view="list">
-                    <i class="ri-list-check"></i>
-                </button>
+            <!-- 統計數據 -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-projects">0</div>
+                    <div class="stat-label">總專案數</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="total-types">0</div>
+                    <div class="stat-label">技術分類</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="recent-projects">0</div>
+                    <div class="stat-label">本年新增</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="active-projects">0</div>
+                    <div class="stat-label">活躍專案</div>
+                </div>
+            </div>
+
+            <!-- 工具欄 -->
+            <div class="toolbar">
+                <div class="toolbar-left">
+                    <div class="search-container" id="search-container">
+                        <div class="search-input-container">
+                            <i class="ri-search-line search-icon"></i>
+                            <input 
+                                type="search" 
+                                class="search-input" 
+                                id="search-input"
+                                placeholder="搜尋專案名稱、技術、關鍵字..." 
+                                aria-label="搜尋專案"
+                            >
+                            <button class="search-clear-btn" id="search-clear" aria-label="清除搜索">
+                                <i class="ri-close-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toolbar-right">
+                    <div class="form-group">
+                        <select class="form-input" id="sort-select" style="min-width: 10rem;">
+                            <option value="date-desc">日期（新到舊）</option>
+                            <option value="date-asc">日期（舊到新）</option>
+                            <option value="title">專案名稱</option>
+                            <option value="type">技術分類</option>
+                        </select>
+                    </div>
+                    
+                    <div class="view-toggle" id="view-toggle">
+                        <button class="view-btn active" data-view="grid" aria-label="網格視圖">
+                            <i class="ri-grid-fill"></i>
+                        </button>
+                        <button class="view-btn" data-view="list" aria-label="列表視圖">
+                            <i class="ri-list-check"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 分類篩選 -->
+            <div class="category-filter" id="category-filter">
+                <!-- 由 JavaScript 動態生成 -->
+            </div>
+
+        <!-- 專案容器 -->
+        <div class="cards-container" id="projects-container">
+            <div class="cards-grid" id="projects-grid">
+                <!-- 由 JavaScript 動態生成 -->
             </div>
         </div>
 
-        <!-- 過濾器 -->
-        <div class="projects-filter">
-            <!-- 類型按鈕組 -->
-            <div class="type-buttons"></div>
-
-            <!-- 排序選擇 -->
-            <div class="filter-group">
-                <label for="sort-select" class="filter-label">排序：</label>
-                <select id="sort-select" class="filter-select">
-                    <option value="date-desc">日期（新到舊）</option>
-                    <option value="date-asc">日期（舊到新）</option>
-                    <option value="title">標題</option>
-                </select>
+        <!-- 空狀態 -->
+        <div class="empty-state" id="empty-state" style="display: none;">
+            <div class="empty-icon">
+                <i class="ri-search-line"></i>
             </div>
+            <h3 class="empty-title">找不到相關專案</h3>
+            <p class="empty-description">
+                請嘗試使用其他關鍵字搜尋，或選擇不同的技術分類查看
+            </p>
+            <button class="btn btn-primary" onclick="clearSearch()">
+                <i class="ri-refresh-line"></i>
+                清除搜尋
+            </button>
         </div>
 
-        <!-- 筆記列表 -->
-        <div class="projects-container" data-view="grid"></div>
-
-        <!-- 分頁 -->
-        <div class="pagination"></div>
+        <!-- 載入狀態 -->
+        <div class="loading-cards" id="loading-cards">
+            <div class="loading-card">
+                <div class="skeleton skeleton-title" style="width: 60%; margin-bottom: var(--space-3);"></div>
+                <div class="skeleton skeleton-text" style="margin-bottom: var(--space-2);"></div>
+                <div class="skeleton skeleton-text" style="margin-bottom: var(--space-2);"></div>
+                <div class="skeleton skeleton-text" style="width: 40%;"></div>
+            </div>
+            <div class="loading-card">
+                <div class="skeleton skeleton-title" style="width: 70%; margin-bottom: var(--space-3);"></div>
+                <div class="skeleton skeleton-text" style="margin-bottom: var(--space-2);"></div>
+                <div class="skeleton skeleton-text" style="margin-bottom: var(--space-2);"></div>
+                <div class="skeleton skeleton-text" style="width: 50%;"></div>
+            </div>
+            <div class="loading-card">
+                <div class="skeleton skeleton-title" style="width: 80%; margin-bottom: var(--space-3);"></div>
+                <div class="skeleton skeleton-text" style="margin-bottom: var(--space-2);"></div>
+                <div class="skeleton skeleton-text" style="margin-bottom: var(--space-2);"></div>
+                <div class="skeleton skeleton-text" style="width: 30%;"></div>
+            </div>
+        </div>
     </main>
 
-    <!-- 頁尾 -->
-    <div id="footer-placeholder"></div>
+    <!-- 主題切換按鈕 -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="切換主題">
+        <i id="theme-icon" class="ri-moon-line"></i>
+    </button>
+</div>
 
-    <!-- 載入中遮罩 -->
-    <div class="loading-overlay">
-        <div class="loading-spinner"></div>
-        <p>載入中...</p>
-    </div>
+<!-- 載入遮罩 -->
+<div class="loading-overlay" id="loading-overlay">
+    <div class="spinner"></div>
+    <span class="loading-text">載入中...</span>
+</div>
 
-    <!-- 腳本 -->
-    <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/projects.js"></script>
+<script src="../assets/js/modern-projects.js"></script>
 </body>
 </html>
